@@ -1,0 +1,60 @@
+% Pour toutes les premières pages
+\pagestyle{empty}
+
+% Pour les deux premières pages
+\pagenumbering{gobble} 
+\pagestyle{plain} % Suppress headers for the pre-content pages
+
+% Permet de formater la liste des examinateurs
+\newcommand{\exam}[5]{#1 \textsc{#2}  & #3, #4  & #5 \\}
+
+\newcommand{\logoUB}{\includegraphics[height=1.5cm]{figures/ubdx-logo}}
+
+\newcommand{\logoLaBRI}{\includegraphics[height=1.5cm]{figures/labri-logo}}
+
+
+\begin{titlepage}
+    \begin{center}
+		% Pour un meilleur rendu, commenter les deux lignes suivantes. :p
+		\vspace*{-40pt}
+		\logoLaBRI \hfill \logoUB \\
+		\vfill
+		\Huge  {\textbf{THÈSE}}\\
+		\bigskip
+		\large PRÉSENTÉE À\\
+		\bigskip
+		\huge  {L'UNIVERSITÉ DE BORDEAUX}\\
+		\bigskip
+		\Large ÉCOLE DOCTORALE {\ecoleDoctorale}\\
+		\bigskip
+		\Large par {\textbf{\myName}}\\
+		\bigskip
+		\Large POUR OBTENIR LE GRADE DE\\
+		\bigskip
+		\LARGE {DOCTEUR}\\
+		\bigskip
+		\large SPÉCIALITÉ : {\specialite}\\
+		\vfill
+		\rule{4em}{1pt}\\
+		\bigskip
+		\Large {{\myTitle}}\\
+		\bigskip
+		\rule{4em}{1pt}\\
+		\medskip
+		\vfill
+	\end{center}
+	\vfill
+	\noindent {\textbf{Date de soutenance:}} \quad \defensedate
+	\vfill
+	%\noindent {\textbf{Après avis des rapporteurs :}} \\
+	%\vfill
+	\noindent Sous la direction de :  \directors\\
+
+	\noindent {\textbf{Devant la commission d'examen composée de:}} \\
+	\begin{tabularx}{\textwidth}{p{.2\textwidth}<{\dotfill}p{.62\textwidth}<{\dotfill}@{}l}
+		\jury
+	\end{tabularx}
+	\vfill
+	\centering
+	\large \rule[0.2em]{0.5em}{1pt}~{\annee}~\rule[0.2em]{0.5em}{1pt}
+\end{titlepage}

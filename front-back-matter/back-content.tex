@@ -1,0 +1,80 @@
+
+
+
+%---------------------------------------------------------------------------
+%	List of Publications
+%---------------------------------------------------------------------------
+\cleardoublepage
+\refstepcounter{dummy}
+\addcontentsline{toc}{chapter}{Liste des publications} % Uncomment if you would like the list of figures to appear in the table of contents
+\markboth{\spacedlowsmallcaps{Liste des publications}}{\spacedlowsmallcaps{Liste des publications}}
+
+\chapter*{Liste des publications}
+% \noindent Des éléments ou figures de ce manuscrit ont été précédemment publiés dans les articles suivant~:
+\begin{refsection}[ownpubs]
+	\nocite{*} % local
+	\printbibliography[type=article,heading=subbibliography,title={Articles en revues internationales},resetnumbers]
+	\printbibliography[type=inproceedings,notkeyword={workshop},heading=subbibliography,title={Articles dans les actes de conférences internationales}]
+	\printbibliography[type=inproceedings,keyword={workshop},heading=subbibliography,title={Articles dans les actes de colloques internationaux}]
+\end{refsection}
+
+\vspace{8ex}
+\newpage
+
+%---------------------------------------------------------------------------
+%	List of Figures
+%---------------------------------------------------------------------------
+\cleardoublepage
+\refstepcounter{dummy}
+\addcontentsline{toc}{chapter}{Liste des figures} % Uncomment if you would like the list of figures to appear in the table of contents
+% \pdfbookmark[1]{\listfigurename}{lof} % Bookmark name visible in a PDF viewer
+
+\renewcommand{\listfigurename}{Liste des figures}
+
+\markboth{\spacedlowsmallcaps{\listfigurename}}{\spacedlowsmallcaps{\listfigurename}}
+\listoffigures
+
+\vspace{8ex}
+\newpage
+
+%----------------------------------------------------------------------------
+%	List of Tables
+%----------------------------------------------------------------------------
+\cleardoublepage
+\refstepcounter{dummy}
+%\renewcommand{\listtablename}{Liste des tableaux}
+\addcontentsline{toc}{chapter}{\listtablename} % Uncomment if you would like the list of tables to appear in the table of contents
+% \pdfbookmark[1]{\listtablename}{lot} % Bookmark name visible in a PDF viewer
+
+\markboth{\spacedlowsmallcaps{\listtablename}}{\spacedlowsmallcaps{\listtablename}}
+\listoftables
+        
+\vspace{8ex}
+\newpage
+    
+%----------------------------------------------------------------------------
+%	List of Listings
+%----------------------------------------------------------------------------
+
+% \refstepcounter{dummy}
+% %\addcontentsline{toc}{chapter}{\lstlistlistingname} % Uncomment if you would like the list of listings to appear in the table of contents
+% \pdfbookmark[1]{\lstlistlistingname}{lol} % Bookmark name visible in a PDF viewer
+
+% \lstlistoflistings 
+
+% \vspace{8ex}
+% \newpage
+       
+%----------------------------------------------------------------------------
+%	Acronyms
+%----------------------------------------------------------------------------
+\cleardoublepage
+\refstepcounter{dummy}
+\addcontentsline{toc}{chapter}{Glossaire} % Uncomment if you would like the acronyms to appear in the table of contents
+
+\markboth{\spacedlowsmallcaps{Glossaire}}{\spacedlowsmallcaps{Glossaire}}
+
+\printnoidxglossary[sort=standard,title={Glossaire}]
+
+
+             

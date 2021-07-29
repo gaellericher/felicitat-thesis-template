@@ -1,0 +1,10 @@
+\cleardoublepage
+\manualmark % Work-around to have small caps also here in the headline
+\renewcommand{\bibname}{Bibliographie}
+\markboth{\spacedlowsmallcaps{\bibname}}{\spacedlowsmallcaps{\bibname}} % Work-around to have small caps also
+\refstepcounter{dummy}
+
+\addtocontents{toc}{\protect\vspace{\beforebibskip}} % Place the bibliography slightly below the rest of the document content in the table of contents
+\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+\emergencystretch=1em % to try to fix overfull lines 
+\printbibliography[resetnumbers=true]

@@ -1,0 +1,66 @@
+
+
+%----------------------------------------------------------------------------------------
+% PDF VERSION
+%----------------------------------------------------------------------------------------
+
+\pdfminorversion=7 % For FACILE platform
+\pdfcompresslevel=9
+\pdfobjcompresslevel=0 % For FACILE platform
+
+\documentclass[twoside,headings=openright,titlepage,numbers=noenddot,headinclude,footinclude=true, cleardoublepage=empty,paper=a4, dottedtoc,BCOR=4mm,fontsize=10pt,french]{scrbook} 
+
+
+%-----------------------------------------------------------------------------
+%	PACKAGES ET AUTRES DOCUMENTS DE CONFIGURATION
+%-----------------------------------------------------------------------------
+
+\input{config}
+\addbibresource{references/references.bib} 
+\addbibresource[label=ownpubs]{references/my-publications.bib}
+
+\begin{document}
+\frenchspacing % Reduces space after periods to make text more compact
+\raggedbottom % Makes all pages the height of the text on that page
+\selectlanguage{french} 
+
+%------------------------------------------------------------
+%	PRE-CONTENU
+%------------------------------------------------------------
+
+\newgeometry{width=16cm,marginratio=1:1,vmarginratio=1:1,top=3cm,bottom=3cm,marginparwidth=0cm}
+\include{front-back-matter/Titlepage} % Main title page
+\include{front-back-matter/Titleback} % Back of the title page
+\newgeometry{width=16cm,marginratio=1:1,vmarginratio=1:1,top=3cm,bottom=3cm,marginparwidth=0cm,bindingoffset=1.5cm}
+\include{front-back-matter/Dedication} % Dedication page
+\include{front-back-matter/Acknowledgments} % Acknowledgements page
+\include{front-back-matter/Contents} % Contents
+\restoregeometry 
+\pagenumbering{arabic}
+\pagestyle{scrheadings} % Show chapter titles as headings
+
+%------------------------------------------------------------
+%	CONTENU : CHAPITRES
+%------------------------------------------------------------
+
+\include{chapters/Chapter01}
+\include{chapters/Chapter02}
+
+
+%------------------------------------------------------------
+%	CONTENU : APPENDICES
+%------------------------------------------------------------
+\appendix
+
+\include{chapters/Chapter0A} % Appendix A 
+
+%------------------------------------------------------------
+%	POST-CONTENU
+%------------------------------------------------------------
+\pagestyle{empty}
+\newgeometry{width=16cm,marginratio=1:1,vmarginratio=1:1,top=3cm,bottom=3cm,marginparwidth=0cm,bindingoffset=1.5cm}
+\input{front-back-matter/Bibliography} % Bibliography
+\include{front-back-matter/back-content} % List of publications/figures/tables/listings and acronyms            
+\include{front-back-matter/Colophon} % Colophon
+\restoregeometry
+\end{document}%
