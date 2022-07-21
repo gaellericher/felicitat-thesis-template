@@ -1,6 +1,4 @@
 % https://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
-% \input{clickable-title}
-
 \newbibmacro{string+url}[1]{%
     \iffieldundef{url}{%
       \iffieldundef{doi}{%
@@ -12,7 +10,6 @@
       \href{\thefield{url}}{#1}%
     }%
 }
-
 \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article,inproceedings]{title}%
     {\usebibmacro{string+url}{\mkbibquote{#1}}}

@@ -16,9 +16,6 @@ CHAP_TEX	:=$(wildcard chapters/*.tex)
 DOC_PDF		:=manuscript.pdf
 CHAP_PDF	:=$(CHAP_TEX:chapters/%.tex=%_.pdf) 
 
-THIRDPARTY	:=$(wildcard figures/thirdparty/*)
-PLACEHOLDERS:=$(THIRDPARTY:figures/thirdparty/%=figures/placeholders/%) 
-
 
 #-------------------------------------------------------------------
 # Variables for different versions
@@ -28,7 +25,7 @@ NOTPRINT	:=\newif\ifprint\printfalse
 
 .SILENT: svg allchapters $(basename $(DOC_PDF))-min.pdf
 
-.PHONY: deepclean clean svg cleantikz cleansvg allchapters validatebib validatefont placeholders
+.PHONY: deepclean clean svg cleantikz cleansvg allchapters validatebib validatefont
 
 all:  $(basename $(DOC_PDF))-min.pdf $(basename $(DOC_PDF))-print-min.pdf allchapters
 
@@ -38,13 +35,6 @@ $(SVG_PDF) : %.pdf : %.svg $(SVG_SRC)
 	$(SVG_C) --export-pdf=$(<:.svg=.pdf) --export-latex --file="$<"
 
 svg: $(SVG_PDF) $(SVG_TEX)
-
-# Create placeholder for all thirdparty images
-#figures/placeholders/%: figures/thirdparty/%
-#	convert $< -fill gray -colorize 100% $@
-
-#placeholders: $(PLACEHOLDERS) 
-
 
 #-------------------------------------------------------------------
 # Command to compile full manuscript (archive version)

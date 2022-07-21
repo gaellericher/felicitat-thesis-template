@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+    \begin{semilogxaxis}[
+            xlabel=magnitude apparente $V$, % Set the labels
+            ylabel=distance,
+            x unit=, % Set the respective units
+            y unit=al,
+            x tick label style={rotate=90,anchor=east}
+        ]
+        \addplot table[x=Magnitude,y=Distance,col sep=comma]{figures/appendixA/data.csv};
+    \end{semilogxaxis}
+\end{tikzpicture}

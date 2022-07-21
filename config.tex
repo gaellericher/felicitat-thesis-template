@@ -1,13 +1,6 @@
-%\ifbooktrue
-%\PassOptionsToClass{paper=a5}{scrbook}
-%\fi
-%
-
-\PassOptionsToPackage{utf8}{inputenc}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[overload]{textcase}
-\PassOptionsToPackage{french}{babel}
 \usepackage[french]{babel}
 \usepackage[autostyle,french=guillemets]{csquotes}
 \MakeOuterQuote{"}
@@ -17,14 +10,15 @@
 \usepackage{mparhack} % To get marginpar right
 \usepackage{fixltx2e} % Fixes some LaTeX stuff 
 \usepackage{enumitem}
-\PassOptionsToPackage{usenames,dvipsnames,svgnames,table}{xcolor}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{epigraph}
 \usepackage{setspace} % To change line in figures
 \usepackage{amsmath}
 \usepackage{mathtools}
-\usepackage{lipsum}  
-\usepackage[listings,dottedtoc,pdfspacing,eulermath,floatperchapter,beramono]{classicthesis} 
+\usepackage{lipsum}
+\usepackage[listings,dottedtoc,pdfspacing,eulermath,floatperchapter,beramono]{classicthesis}
 \usepackage{tocloft}
+
 %----------------------------------------------------------------------
 %	CHANGING TEXT AREA 
 %----------------------------------------------------------------------
@@ -38,8 +32,8 @@
 	%showframe
 ]{geometry}
 \setlength{\parskip}{.1\baselineskip}
-\setlength{\cftfignumwidth}{4em} 
-\setlength{\cfttabnumwidth}{4em} 
+\setlength{\cftfignumwidth}{4em}
+\setlength{\cfttabnumwidth}{4em}
 \setlength{\epigraphwidth}{.4\textwidth}
 
 
@@ -50,56 +44,21 @@
 \usepackage{graphbox}
 \usepackage{grffile}
 \usepackage{transparent}
-
- 
-
-\graphicspath{{figures/introduction/},{figures/hiepaco/},{figures/corfish/},{figures/state/},{figures/kandinsky/}}
-
-\usepackage{ifpdf}
-\ifpdf
+% Don't forget to update the list of figure folder if necessary
+\graphicspath{{figures},{figures/chapter1/}, {figures/chapter2}, {figures/appendixA}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
-\else
-\DeclareGraphicsExtensions{.eps}
-\fi
-\usepackage{tabularx,booktabs,colortbl}
-\usepackage{multirow,makecell}
-\usepackage{rotating}
+\usepackage{booktabs,tabularx,longtable,makecell}
+\renewcommand\theadfont{\scshape}
 \setlength{\extrarowheight}{3pt} % Increase table row height
-\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
-\newcommand{\myfloatalign}{\centering} % To be used with each float for alignment
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{wrapfig}
-\renewcommand{\floatpagefraction}{.8}% % Since the document will surely have large figures
+\usepackage{caption,subcaption}
+\renewcommand{\floatpagefraction}{.8} % Since the document will surely have large figures
 \captionsetup{format=hang,font=small}
 \captionsetup[subfigure]{justification=centering}
 \captionsetup[subtable]{justification=centering}
 \captionsetup[table]{format=hang}
 \usepackage{sidenotes} % provides marginfigure, margintable, figure* (puts figure across page), sidenotetext and sidenote
-\DeclareCaptionStyle{widefigure}{font=small}
-
-% Extern copyright image
-\newcommand{\archiveonly}[1]{
-	\ifdiffusion\else #1 \fi
-}
-
-
-% Background image
-\usepackage[pages=some]{background}
-
-% Image with close-up
-\newcommand{\withcloseup}[2]{
-	\begin{tikzpicture}
-		\node[inner sep=0pt,draw=gray,very thick] (full) at (0,0)
-		{\includegraphics[width=#2]{#1}};
-		\node[inner sep=0pt,draw=orange,very thick] (closeup) at (1,1)
-		{
-			\includegraphics[width=2.4cm,trim={1cm 1cm 20cm 20cm},clip]{#1}%
-		};
-		\draw[orange, thick] (-1.8,-2) rectangle (-.9, -1);
-	\end{tikzpicture}
-}
 \usepackage[export]{adjustbox}
+\usepackage{csvsimple} % import csv file into tables
 
 %------------------------------------------------------------
 %	CODE & ALGO
@@ -117,7 +76,6 @@
 \algtext*{EndCase}%
 \algnewcommand{\LineComment}[1]{\State \textcolor{gray}{\(\triangleright\) #1}}
 \algrenewcomment[1]{\hfill\eqparbox{COMMENT}{\textcolor{gray}{\(\triangleright\)  #1}}}
-
 \renewcommand{\listalgorithmname}{Liste des algorithmes}
 \floatname{algorithm}{Algorithme}
 \renewcommand{\algorithmicreturn}{\textbf{retourne}}
@@ -139,17 +97,16 @@
 \newcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif}
 \newcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor}
 
-
-
 %------------------------------------------------------------
 %	FONTES ET LANGUES
 %------------------------------------------------------------
-\usepackage{microtype}  
+\usepackage{microtype}
 \usepackage[scale=0.9]{FiraMono}
 \usepackage{Alegreya}
 \renewcommand*\oldstylenums[1]{{\AlegreyaOsF #1}}
 \usepackage{AlegreyaSans}
 \usepackage[italic]{mathastext}
+
 %------------------------------------------------------------
 %	STYLE DES TITRES
 %------------------------------------------------------------
@@ -157,36 +114,35 @@
 \usepackage{titletoc}% http://ctan.org/pkg/titletoc
 \newcommand{\hsp}{\hspace{20pt}}
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\sffamily\color{darkgray}\thechapter\hsp}{0pt}{\LARGE\bfseries\sffamily\scshape\textcolor{darkgray} }
-\titleformat{\section}{\relax}{\Large\sffamily\bfseries\color{darkgray}\thesection}{.5em}{\sffamily\Large\bfseries\textcolor{darkgray}} 
-\titleformat{\subsection}{\relax}{\large\sffamily\itshape\bfseries\color{darkgray}\thesubsection}{.5em}{\sffamily\large\itshape\bfseries\textcolor{darkgray}} 
-\titleformat{\subsubsection}{\relax}{\large\sffamily\itshape\color{darkgray}\thesubsubsection}{.5em}{\sffamily\large\itshape\textcolor{darkgray}} 
+\titleformat{\section}{\relax}{\Large\sffamily\bfseries\color{darkgray}\thesection}{.5em}{\sffamily\Large\bfseries\textcolor{darkgray}}
+\titleformat{\subsection}{\relax}{\large\sffamily\itshape\bfseries\color{darkgray}\thesubsection}{.5em}{\sffamily\large\itshape\bfseries\textcolor{darkgray}}
+\titleformat{\subsubsection}{\relax}{\large\sffamily\itshape\color{darkgray}\thesubsubsection}{.5em}{\sffamily\large\itshape\textcolor{darkgray}}
 \titleformat{\paragraph}[runin]{\normalfont\lsstyle\bfseries\scshape}{\theparagraph}{}{}
 \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\bfseries\spacedlowsmallcaps{#1}}
-
-% \usepackage{minitoc}
 \titlecontents{chapter}
-	[0pt] 
-	{\addvspace{9pt}}
-	{\scshape\lsstyle\thecontentslabel\quad}
-	{\scshape\lsstyle\thecontentslabel\quad}
-	{\hfill\contentspage}
+[0pt]
+{\addvspace{9pt}}
+{\scshape\lsstyle\thecontentslabel\quad}
+{\scshape\lsstyle\thecontentslabel\quad}
+{\hfill\contentspage}
+% \usepackage{minitoc}
 
 %------------------------------------------------------------
 %	DESSIN
 %------------------------------------------------------------
-\usepackage{tikz,tikz-3dplot}
+\usepackage{tikz}
 \usepackage{etoolbox,xstring}
-\usepackage{pgf,pgfplots,pgfplotstable,tikz-qtree}
-\usepackage{overpic}
+\usepackage{pgf,pgfplots,pgfplotstable}
 % Default style for PGFPlots
 \pgfplotsset{
 	compat=newest,
-	grid=none,
+	grid=major,
+	grid style={dashed,gray!30},
 	width=7cm,
 	every axis plot/.append style={thick},
 	cycle list name=exotic,
 	legend style={
-			at={(0.5,-0.2)},
+			at={(0.5,1.2)},
 			anchor=north,
 			legend columns=2,
 			cells={anchor=west},
@@ -194,78 +150,20 @@
 		}
 }
 \usetikzlibrary{%
-	3d,
 	arrows,%
 	arrows.meta,
 	backgrounds,
 	calc,%
-	chains,%
-	decorations.pathreplacing,%
-	decorations.pathmorphing,% /pgf/decoration/random steps
 	external,
 	fit,
-	graphs,
-	graphs.standard,
-	hobby,
-	matrix,%
-	patterns,
 	positioning,% wg. " of "
-	scopes,%
 	shapes,
 	shapes.misc,% wg. rounded rectangle
-	shapes.arrows,%
-	shapes.geometric,%
-	shadows,%
-	shadows.blur,
-	trees,
 	through
 }
-\usepackage[outline]{contour}
-\contourlength{0.1em}
+\tikzset{>=triangle 45}
 \pgfkeys{/pgf/number format/.cd,1000 sep={\,}, /pgf/number format/use comma}
 \usepgfplotslibrary{units,groupplots,fillbetween}
-% https://tex.stackexchange.com/questions/463814/check-whether-string-represents-valid-number-for-pgf
-\newcommand{\isPGFNumber}[3]{% \isPGFNumber{<Number>}{<True>}{<False>}
-	\begingroup
-	\pgfkeys{/pgf/fpu/handlers/invalid number/.code={}}%
-	\pgfmathfloatparsenumber{#1}%
-	\global\pgfmathfloatgetflagstomacro\pgfmathresult\pgfFloatParseFlag%
-	\endgroup
-	\ifnum\pgfFloatParseFlag=3%
-	#3%
-	\else%
-	#2%
-	\fi%
-}
-
-% Layer management
-\pgfdeclarelayer{foreground}
-\pgfsetlayers{background,main,foreground}
-
-\makeatletter
-\tikzset{%
-	on foreground layer/.style={%
-		execute at begin scope={%
-			\pgfonlayer{foreground}%
-			\let\tikz@options=\pgfutil@empty%
-			\tikzset{every on foreground layer/.try,#1}%
-			\tikz@options%
-		},
-		execute at end scope={\endpgfonlayer}
-	},
-	on layer/.code={%
-		\pgfonlayer{#1}\begingroup
-		\aftergroup\endpgfonlayer
-		\aftergroup\endgroup
-	},
-	node on layer/.code={%
-		\gdef\node@@on@layer{%
-			\setbox\tikz@tempbox=\hbox\bgroup\pgfonlayer{#1}\unhbox\tikz@tempbox\endpgfonlayer\egroup}
-		\aftergroup\node@on@layer
-	},
-}
-\def\node@on@layer{\aftergroup\node@@on@layer}
-
 
 % Externalize tikz compilation
 \input{externalize-hack.tex} % Fix for externalize + jobname -> https://tex.stackexchange.com/questions/273898/tikz-externalize-not-working-when-jobname-is-specified-for-main-document
@@ -279,8 +177,6 @@
 \usepackage[mathscr]{euscript}
 \usepackage{fontawesome5,stmaryrd,mathbbol}
 \usepackage{xfrac}
-
-
 \usepackage{soul} % Text highlighting
 \newcommand{\hlc}[2][yellow]{{%
 			\colorlet{foo}{#1}%
@@ -295,7 +191,6 @@
 \DeclareSIUnit{\octet}{o}
 \sisetup{per-mode=symbol,per-symbol=\text{/},locale=FR}
 
-
 %------------------------------------------------------------
 %	CITATIONS REFERENCES
 %------------------------------------------------------------
@@ -304,11 +199,6 @@
 	bibencoding=utf8,
 	language=auto,%
 	defernumbers=true, %
-	% bibstyle=publist,
-	% labelnumber=true,
-	% plauthorhandling=highlight,
-	% nameorder=given-family,
-	% boldyear=false,
 	maxbibnames=6, % default: 3, et al.
 	maxcitenames=2,
 	backref=true,%
@@ -325,7 +215,7 @@
 	\clearfield{month}
 	\clearfield{series}
 	\clearfield{abstract}
-	
+
 	\ifentrytype{book}{}{% Remove publisher and editor except for books
 		\clearlist{publisher}
 		\clearname{editor}
@@ -342,38 +232,37 @@
 {\endlist}
 {\item}
 
-\input{clickable-title}
+\input{clickable-title-in-pubs}
+\input{bold-own-name-in-pubs}
+%\makeauthorsbold{\myName} % Or replace with how your name is listed in your BiBTeX
 
 
 % COLORS
-\definecolor{Emerald}{RGB}{94,202,132}
-\definecolor{Gray}{RGB}{127,127,127}
-\definecolor{BurntOrange}{rgb}{0.8, 0.33, 0.0}
-\definecolor{Froly}{RGB}{246, 114, 128}
-\definecolor{WildWillow}{RGB}{182, 211,129}
-\definecolor{nodeblue}{RGB}{0, 136, 170}
-\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26}
-\definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
-\definecolor{beaver}{rgb}{0.62, 0.51, 0.55}
-\definecolor{asparagus}{RGB}{145,174,120}
-\definecolor{brickred}{rgb}{0.8, 0.25, 0.33}
-\definecolor{mygreen}{RGB}{177, 226, 213}
-\definecolor{mypurple}{RGB}{190,164,252}
-\definecolor{myyellow}{RGB}{251,239,191}
-\definecolor{DeepBlue}{RGB}{0,102,255}
-\definecolor{Greenish}{RGB}{37,138,126}
-\definecolor{AppleGreen}{RGB}{172,213,5}
-\definecolor{CandyPink}{RGB}{253,53,97}
-\definecolor{turquoise}{RGB}{69,161,162}
-\definecolor{yok}{RGB}{240,195,24}
+% \definecolor{Emerald}{RGB}{94,202,132}
+% \definecolor{Gray}{RGB}{127,127,127}
+% \definecolor{BurntOrange}{rgb}{0.8, 0.33, 0.0}
+% \definecolor{Froly}{RGB}{246, 114, 128}
+% \definecolor{WildWillow}{RGB}{182, 211,129}
+% \definecolor{nodeblue}{RGB}{0, 136, 170}
+% \definecolor{alizarin}{rgb}{0.82, 0.1, 0.26}
+% \definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
+% \definecolor{beaver}{rgb}{0.62, 0.51, 0.55}
+% \definecolor{asparagus}{RGB}{145,174,120}
+% \definecolor{brickred}{rgb}{0.8, 0.25, 0.33}
+% \definecolor{mygreen}{RGB}{177, 226, 213}
+% \definecolor{mypurple}{RGB}{190,164,252}
+% \definecolor{myyellow}{RGB}{251,239,191}
+% \definecolor{DeepBlue}{RGB}{0,102,255}
+% \definecolor{Greenish}{RGB}{37,138,126}
+% \definecolor{AppleGreen}{RGB}{172,213,5}
+% \definecolor{CandyPink}{RGB}{253,53,97}
+% \definecolor{turquoise}{RGB}{69,161,162}
+% \definecolor{yok}{RGB}{240,195,24}
 
 
 %------------------------------------------------------------
 % VARIABLES, COMMANDES 
 %------------------------------------------------------------
-
-\tikzset{>=triangle 45}
-
 \newcommand{\myTitle}{Un long titre de thèse\xspace}
 \newcommand{\EnglishTitle}{Same but in English\xspace}
 \newcommand{\myName}{Prénom \textsc{Nom}\xspace}
@@ -393,7 +282,6 @@
 \newlength{\abcd} % for ab..z string length calculation
 
 % Command to include externalized tikZ and SVG
-
 \newcommand{\includetikz}[3][\linewidth]{
 	\tikzsetnextfilename{#3}
 	\resizebox{#1}{!}{
@@ -404,17 +292,12 @@
 	\def\svgwidth{#1}
 	\input{#2.pdf_tex}
 }
-	
-
-\newcommand*\circled[1]{\tikzexternaldisable\tikz{
-		\node[circle,font=\sffamily\scriptsize,draw=black,inner sep=0.5pt] {#1};}\tikzexternalenable}
 
 % Redo underbrace command, broken with xetex apparently
 \makeatletter
 \def\underbrace#1{\@ifnextchar_{\tikz@@underbrace{#1}}{\tikz@@underbrace{#1}_{}}}
 \def\tikz@@underbrace#1_#2{\tikz[baseline=(a.east)] {\node (a) {\(#1\)}; \draw[decorate,decoration={brace,amplitude=5pt}] (a.south east) -- node[below,inner sep=7pt] {\(\scriptstyle #2\)} (a.south west);}}
 \makeatother
-
 
 \newcommand{\checked}{\tikzexternaldisable\tikz \fill[asparagus] (0,0) rectangle (2ex,2ex);\tikzexternalenable} % 
 \newcommand{\halfchecked}{\tikzexternaldisable\tikz \fill[asparagus] (0,0) -- (0,2ex) -- (2ex,2ex) --(0,0);\tikzexternalenable} % 
@@ -425,7 +308,6 @@
 }
 \newcommand{\smallbox}[1]{\xtikz{\fill[fill=#1] (0,0) rectangle (2ex,2ex);}}
 \newcommand{\nope}{\xtikz{\draw[black] (0,0) -- (2ex,2ex);}}
-
 \newcommand{\colorrow}[1]{\texttt{#1}&\smallbox{#1}}
 
 
@@ -455,42 +337,42 @@
 \usepackage{url}
 \ifprint
 
-\hypersetup{
-	colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV, 
-	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
-	plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-	hypertexnames=true, pdfhighlight=/O,%nesting=true,
-	frenchlinks,
-	%------------------------------------------------
-	% PDF file meta-information
-	pdftitle={\myTitle},
-	pdfauthor={\textcopyright\ \myName, \myUni},
-	pdfsubject={},
-	pdfkeywords={},
-	pdfproducer={LaTeX}
-	%------------------------------------------------
-}
+	\hypersetup{
+		colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,
+		breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+		plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+		hypertexnames=true, pdfhighlight=/O,%nesting=true,
+		frenchlinks,
+		%------------------------------------------------
+		% PDF file meta-information
+		pdftitle={\myTitle},
+		pdfauthor={\textcopyright\ \myName, \myUni},
+		pdfsubject={},
+		pdfkeywords={},
+		pdfproducer={LaTeX}
+		%------------------------------------------------
+	}
 
 \else
-\hypersetup{
-	colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,
-	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
-	plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-	hypertexnames=true, pdfhighlight=/O,%nesting=true,
-	frenchlinks,
-	urlcolor=teal, linkcolor=darkgray, citecolor=BurntOrange,
-	%------------------------------------------------
-	% PDF file meta-information
-	pdftitle={\myTitle},
-	pdfauthor={\textcopyright\ \myName, \myUni},
-	pdfsubject={},
-	pdfkeywords={},
-	pdfproducer={LaTeX}
-	%------------------------------------------------
-}
+	\hypersetup{
+		colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,
+		breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+		plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+		hypertexnames=true, pdfhighlight=/O,%nesting=true,
+		frenchlinks,
+		urlcolor=teal, linkcolor=darkgray, citecolor=BurntOrange,
+		%------------------------------------------------
+		% PDF file meta-information
+		pdftitle={\myTitle},
+		pdfauthor={\textcopyright\ \myName, \myUni},
+		pdfsubject={},
+		pdfkeywords={},
+		pdfproducer={LaTeX}
+		%------------------------------------------------
+	}
 \fi
 
-\usepackage[french]{cleveref} 
+\usepackage[french]{cleveref}
 
 %------------------------------------------------------------
 % GLOSSAIRE 
@@ -501,31 +383,15 @@
 \makenoidxglossaries
 
 
-
-%% Page de garde
-\newcommand{\ecoleDoctorale}{}
-\newcommand{\specialite}{}
-\newcommand{\annee}{}
-\newcommand{\defensedate}{}
-\newcommand{\jury}{}
-\newcommand{\directors}{}
-
-% École doctorale
-\renewcommand{\ecoleDoctorale}{DE MATHÉMATIQUES ET D'INFORMATIQUE}
-
-% Spécialité
-\renewcommand{\specialite}{INFORMATIQUE}
-
-% Disrecteur de thèse
-\renewcommand{\directors}{\myProfs}
-
-% Année de soutenance
-\renewcommand{\annee}{1968}
-
-% Date de la soutenance
-\renewcommand{\defensedate}{23 juillet 1968}
-
-\renewcommand{\jury}{
+%------------------------------------------------------------
+% PAGE DE GARDE 
+%------------------------------------------------------------
+\newcommand{\ecoleDoctorale}{DE MATHÉMATIQUES ET D'INFORMATIQUE}
+\newcommand{\specialite}{INFORMATIQUE}
+\newcommand{\directors}{\myProfs}
+\newcommand{\annee}{1968}
+\newcommand{\defensedate}{23 juillet 1968}
+\newcommand{\jury}{
 	% prénom, nom, titre, institution, rôle
 	\exam{Juliette}{Smith}{Directeur de Recherche}
 	{CNRS}{Rapportrice}
@@ -537,9 +403,9 @@
 	{Université de Bordeaux}{Co-Directeur}
 	\exam{Jackie}{Paulette}{Maître de Conférences}
 	{Université de Bordeaux}{Co-directeur}
-	
+
 }
-%Titre: Maître de conférences, Professeur des universités, Chargé de recherche…
-%Rôle: Président (du jury), Directeur, Co-directeur, Rapporteur, Examinateur…
+%Titre: Maître de conférences, Professeur des universités, Chargé(e) de recherche…
+%Rôle: Président(e) (du jury), Directeur/Directrice, Rapporteur/Rapportrice, Examinateur/Examinatrice
 
 
