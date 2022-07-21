@@ -42,3 +42,4 @@ Ubuntu repository package list: `tex-common texlive-base texlive-latex-recommend
 - Add a textidote command
 - Add SVG figure example
 - \usepackage{import}
+- Create bibliography style
