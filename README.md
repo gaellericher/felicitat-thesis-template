@@ -25,7 +25,7 @@ latexmk -pdf --shell-escape -recorder main.tex
 - Underline thesis author in publication list
 - FontAwesome icons (LaTeX [package](https://ctan.org/pkg/fontawesome5))
 - Precompilation of TikZ figures to PDF files
-
+- PGFPlot example with CSV file
 
 ## Dependencies
 
@@ -40,6 +40,5 @@ Ubuntu repository package list: `tex-common texlive-base texlive-latex-recommend
 - Clean various custom commands
 - Add an extra A5-format compilation mode
 - Add a textidote command
-- Add PGFPlot example with CSV file
 - Add SVG figure example
 - \usepackage{import}
